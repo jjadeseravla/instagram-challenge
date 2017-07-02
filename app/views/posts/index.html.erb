@@ -1,4 +1,8 @@
 <% @posts.each do |post| %>
-<%= post.message %>
+<%= post.comment%>
 <% end %>
 <%= link_to "New Post", new_post_path %>
+
+<div id="avatar" class="avatar">
+<img src="/default_avatar.jpeg" alt="default avatar">
+</div>

@@ -8,9 +8,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    #  @post = Post.new(params[:comment])
-     @post = Post.new
-    if @post.save
+    @post = Post.create(post_params)
+    if @post.valid?
       redirect_to post_path(@post)
     else
       redirect_to new_post_path
@@ -18,5 +17,12 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:comment)
   end
 end
